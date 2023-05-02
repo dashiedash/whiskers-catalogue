@@ -1,0 +1,20 @@
+TIME REPORT
+
+Intern: Elo Faith M. Flores
+
+Project name: Laravel Training - Final Project
+Time: 05:00 PM
+Duration: 08:00:00
+
+Done:
+1.  Create a blank Laravel project.
+    https://i.imgur.com/VD3wUTD.png
+
+2.  Create navbar.
+
+Roadblocks:
+N/A
+
+Next:
+
+Screenshots:
