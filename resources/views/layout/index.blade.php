@@ -3,8 +3,8 @@
 
 <x-head></x-head>
 
-<body>
-  <x-header></x-header>
+<body class="bg-slate-100">
+  <x-header class=""></x-header>
 </body>
 
 </html>
