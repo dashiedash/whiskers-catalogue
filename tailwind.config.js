@@ -6,6 +6,9 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
+        fontFamily: {
+            notoSans: "'Noto Sans', sans-serif",
+        },
         extend: {},
     },
     plugins: [],
