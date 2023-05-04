@@ -2,19 +2,26 @@ TIME REPORT
 
 Intern: Elo Faith M. Flores
 
-Project name: Laravel Training - Final Project
+Project name: Laravel Training - Final Project (Whiskers Catalogue: Online Bookstore)
 Time: 05:00 PM
 Duration: 08:00:00
 
 Done:
 1.  Create a blank Laravel project.
-    https://i.imgur.com/VD3wUTD.png
 
-2.  Create navbar.
+2.  Install Tailwind CSS.
+
+3.  Create navbar.
+
+4.  Create hero banner.
+
+5.  Create listings.
+
+Repository:
+https://github.com/dashiedash/whiskers-catalogue
 
 Roadblocks:
-N/A
+1.  Difficulty in setting up Tailwind CSS.
 
 Next:
-
-Screenshots:
+1.  Continue building the online bookstore.
