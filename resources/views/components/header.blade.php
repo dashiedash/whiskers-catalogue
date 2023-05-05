@@ -81,7 +81,7 @@
         </div>
       </div>
       {{-- Mobile Nav Links --}}
-      <div x-show="isOpen" class="items-center md:flex">
+      <div x-show="isOpen" class="items-center md:flex md:hidden">
         <ul class="flex flex-col justify-between md:ml-6 md:flex-row">
           <li class="px-3 py-2 hover:bg-slate-300">
             <a href="" class="flex items-center">

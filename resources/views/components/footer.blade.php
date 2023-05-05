@@ -1,31 +1,112 @@
 <footer {{ $attributes->class('bg-slate-100') }}>
-  <div class="container grid lg:grid-cols-12 auto-cols-auto gap-3 max-w-screen-xl mx-auto sm:p-7 p-3">
+  <div class="container mx-auto grid max-w-screen-xl auto-cols-auto gap-3 p-3 sm:p-7">
     {{-- Footer Logo --}}
-    <div class="col-span-3">
-        <div class="">
-            Logo
+    <div class="col-span-4">
+      <div class="my-3 flex items-center justify-center">
+        <svg class="h-full w-12" version="1.1" viewBox="70 0 560 560" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="m350 0c154.64 0 280 125.36 280 280s-125.36 280-280 280c-154.63 0-280-125.36-280-280s125.36-280 280-280zm-49.656 317.94c-55.684 19.367-60.715 21.898-60.73 21.914l2.6367 4.4219c0.019531-0.007813 4.6055-2.2773 59.785-21.469l-1.6914-4.8633zm0-10.465c-43.285 15.059-47.184 17.008-47.191 17.008l2.3047 4.6055c0.007813-0.007813 3.6094-1.8047 46.582-16.75l-1.6914-4.8633zm0-9.6875c-35.973 12.512-39.324 14.227-39.328 14.23l2.8594 4.2969c0.007812 0 2.8516-1.3789 38.164-13.664l-1.6914-4.8633zm99.316 20.152c55.684 19.367 60.723 21.898 60.734 21.914l-2.6445 4.4219c-0.015625-0.007813-4.6016-2.2773-59.785-21.469l1.6914-4.8633zm0-10.465c43.285 15.059 47.184 17.008 47.199 17.008l-2.3047 4.6055c-0.015625-0.007813-3.6094-1.8047-46.586-16.75zm0-9.6875c35.973 12.512 39.328 14.227 39.336 14.23l-2.8672 4.2969c-0.007812 0-2.8438-1.3789-38.164-13.664l1.6914-4.8633zm-49.66 43.078 43.293-42.242h-86.574l43.285 42.242zm-69.512-128.36c-21.594 0-39.109 16.863-39.109 37.656 0 20.797 17.512 37.656 39.109 37.656 21.594 0 39.102-16.863 39.102-37.656 0-20.797-17.508-37.656-39.102-37.656zm30.621 36.324c-12.672 33.391-58.188 11.719-42.945-22.316-52.41 48.078 39.211 84.75 42.945 22.316zm108.41-36.324c21.594 0 39.109 16.863 39.109 37.656 0 20.797-17.512 37.656-39.109 37.656-21.594 0-39.109-16.863-39.109-37.656 0-20.797 17.512-37.656 39.109-37.656zm-30.621 36.324c12.664 33.391 58.188 11.719 42.945-22.316 52.402 48.078-39.211 84.75-42.945 22.316zm52.707-84.176 66.535-39.309 10.629 8.4922-25.73 79.348c14.496 22.094 22.496 47.703 22.496 74.168 0 88.281-82.281 147.3-165.54 147.3-83.254 0-165.54-59.016-165.54-147.3 0-26.48 8-52.07 22.496-74.168l-25.73-79.348 10.637-8.4922 66.531 39.309c27.68-16.383 59.492-24.598 91.602-24.598 32.094 0 63.949 8.2148 91.605 24.598zm57.391-16.98-57.559 34.008c-28.656-18.055-57.383-27.035-91.441-27.035-33.957 0-62.781 9.0078-91.441 27.035l-57.543-34.008 21.988 67.828c-15.41 22.273-23.938 44.43-23.938 71.852 0 80.199 75.73 132.7 150.93 132.7s150.95-52.5 150.95-132.7c0-27.297-8.5273-49.605-23.945-71.852z"
+            fill-rule="evenodd" />
+        </svg>
+        <div class="px-3">
+          <span class="font-serif text-lg font-semibold uppercase">Whiskers Catalogue</span>
+          {{-- Socials  --}}
+          <div class="flex items-center justify-between space-x-3">
+            <a href="https://www.facebook.com" target="_blank">
+              <svg class="w-5 hover:fill-slate-700"" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                  d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
+              </svg>
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+              <svg class="w-5 hover:fill-slate-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+              <svg class="w-5 hover:fill-slate-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+              <svg class="w-5 hover:fill-slate-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+              </svg>
+              <a href="https://www.instagram.com" target="_blank">
+                <svg class="w-4 hover:fill-slate-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                </svg></a>
+            </a>
+          </div>
         </div>
-      <p>
-        123 Bentong St.
-        <br>
-        Damulag, Santa Clause
-        <br>
-        5555 Zumbales
-        <br>
-        Philippines
-      </p>
+      </div>
+      <div class="flex justify-center py-3 sm:justify-start">
+        {{-- Address  --}}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+          <path fill-rule="evenodd"
+            d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"
+            clip-rule="evenodd" />
+        </svg>
+
+        <div class="px-1 text-xs">
+          <p>
+            123 Bentong St. <br>
+            Damulag, Santa Clause <br>
+            5555 Zumbales <br>
+            Philippines
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="col-span-3">
-        Socials
+    {{-- Contacts  --}}
+    <div class="col-span-4">
+      <h4 class="mb-2 text-center text-sm font-bold uppercase">Contact</h4>
+      <div class="flex flex-col space-y-1 text-xs">
+        <div class="flex items-center justify-center space-x-2 sm:justify-start">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
+            <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+            <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+          </svg>
+          <p> whiskerscatalogue@store.com</p>
+        </div>
+        <div class="flex items-center justify-center space-x-2 sm:justify-start">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
+            <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z" />
+            <path fill-rule="evenodd"
+              d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z"
+              clip-rule="evenodd" />
+          </svg>
+          <p>+63900 000 0000</p>
+        </div>
+        <div class="flex items-center justify-center space-x-2 sm:justify-start">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
+            <path fill-rule="evenodd"
+              d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
+              clip-rule="evenodd" />
+          </svg>
+          <p>(029) 699 - 9999</p>
+        </div>
+      </div>
     </div>
-    <div class="col-span-3">
-        Links
+    {{-- Links --}}
+    <div class="col-span-4 hidden sm:block">
+      <h4 class="mb-2 text-center text-xs font-bold uppercase">Links</h4>
+      <div class="flex flex-col space-y-1">
+        <a href="" class="text-xs uppercase">Store</a>
+        <a href="" class="text-xs uppercase">Cart</a>
+        <a href="" class="text-xs uppercase">Account</a>
+      </div>
     </div>
-    <div class="col-span-3">
-        Etc,
-    </div>
-    <div class="col-span-12">
-        Copyright
+    <div class="col-span-4 sm:col-span-12 text-center sm:text-left">
+      <p class="text-xs">&copy; 2023 Whiskers Catalogue</p>
     </div>
   </div>
 </footer>

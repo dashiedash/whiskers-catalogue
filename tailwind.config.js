@@ -7,7 +7,8 @@ module.exports = {
     ],
     theme: {
         fontFamily: {
-            notoSans: "'Noto Sans', sans-serif",
+            sans: "'Noto Sans', ui-sans-serif, sans-serif",
+            serif: "'Playfair Display', ui-serif, serif",
         },
         extend: {},
     },
