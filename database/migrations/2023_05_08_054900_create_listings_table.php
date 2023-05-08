@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('publish_state');
             $table->string('publish_country');
             $table->longText('description');
-            $table->string('cover');
+            $table->string('cover')->nullable();
             $table->unsignedInteger('stock');
             $table->unsignedBigInteger('isbn');
             $table->decimal('price', $precision = 6, $scale = 2);

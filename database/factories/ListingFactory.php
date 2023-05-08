@@ -12,11 +12,11 @@ class ListingFactory extends Factory
     public function definition(): array
     {
         return [
-            'author_last-name' => $this->faker->lastName,
+            'author_last_name' => $this->faker->lastName,
             'author_first_name' => $this->faker->firstName,
             'publish_year' => $this->faker->year($max = 'now'),
             'title' => $this->faker->sentence($nbWords = 3, $variableNbWords = true),
-            'subtitle' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'subtitle' => $this->faker->sentence($nbWords = 4, $variableNbWords = true),
             'publisher' => $this->faker->company,
             'publish_city' => $this->faker->city,
             'publish_state' => $this->faker->state,
