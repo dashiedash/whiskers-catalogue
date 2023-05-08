@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('publisher');
             $table->string('publish_place');
             $table->string('distributor');
+            $table->longText('description');
+            $table->string('cover');
+            $table->integer('stock');
             $table->decimal('price', $precision = 6, $scale = 2);
             $table->timestamps();
         });
