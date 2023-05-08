@@ -1,7 +1,5 @@
-<h2>
-    {{ $book['title'] }}
-</h2>
-
-<p>
-    {{ $book['description'] }}
-</p>
+<main>
+    <div class="container">
+        
+    </div>
+</main>
