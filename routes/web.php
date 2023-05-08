@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Store Page
 Route::get('/', function () {
-    return view('/layout/index');
+    return view('/layout/index', [
+        'books' => Listing::all()
+    ]);
+});
+
+
+
+// Single Listing
+Route::get('/book/{id}', function ($id) {
+    return view('/layout/book', [
+        'book' => Listing::find($id)
+    ]);
 });
