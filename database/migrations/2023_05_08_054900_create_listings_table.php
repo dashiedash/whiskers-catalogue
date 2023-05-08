@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->string('publisher');
-            $table->string('publish_place');
-            $table->string('distributor');
+            $table->string('publish_city');
+            $table->string('publish_state');
+            $table->string('publish_country');
             $table->longText('description');
             $table->string('cover');
             $table->integer('stock');

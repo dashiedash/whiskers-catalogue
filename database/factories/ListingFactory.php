@@ -15,22 +15,19 @@ class ListingFactory extends Factory
     public function definition(): array
     {
         return [
-            /*
-             $table->string('author_last_name');
-            $table->string('author_first_name');
-            $table->year('publish_year');
-            $table->string('title');
-            $table->string('subtitle')->nullable();
-            $table->string('publisher');
-            $table->string('publish_place');
-            $table->string('distributor');
-            $table->longText('description');
-            $table->string('cover');
-            $table->integer('stock');
-            $table->decimal('price', $precision = 6, $scale = 2);
-            */
-
-            'author_last-name' => $this->faker->lastName(),
+            'author_last-name' => $this->faker->lastName,
+            'author_first_name' => $this->faker->firstName,
+            'publish_year' => $this->faker->year($max = 'now'),
+            'title' => $this->faker->sentence($nbWords = 3, $variableNbWords = true),
+            'subtitle' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'publisher' => $this->faker->company,
+            'publish_city' => $this->faker->city,
+            'publish_state' => $this->faker->state,
+            'publish_country' => $this->faker->country,
+            'description' => $this->faker->paragraph(5),
+            'cover' => $this->faker->,
+            'stock',
+            'price'
         ];
     }
 }
