@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Listings;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,8 +9,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ListingFactory extends Factory
 {
-    protected $model = Listings::class;
-
     public function definition(): array
     {
         return [
@@ -25,9 +22,9 @@ class ListingFactory extends Factory
             'publish_state' => $this->faker->state,
             'publish_country' => $this->faker->country,
             'description' => $this->faker->paragraph(5),
-            'cover' => $this->faker->,
-            'stock',
-            'price'
+            'stock' => $this->faker->numberBetween($min = 0, $max = 50),
+            'isbn' => $this->faker->numberBetween($min = 1000000000, $max = 9999999999),
+            'price' => $this->faker->numberBetween($min = 10, $max = 200)
         ];
     }
 }

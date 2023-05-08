@@ -24,7 +24,8 @@ return new class extends Migration
             $table->string('publish_country');
             $table->longText('description');
             $table->string('cover');
-            $table->integer('stock');
+            $table->unsignedInteger('stock');
+            $table->unsignedBigInteger('isbn');
             $table->decimal('price', $precision = 6, $scale = 2);
             $table->timestamps();
         });

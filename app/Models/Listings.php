@@ -24,5 +24,5 @@ class Listings extends Model
             $table->decimal('price', $precision = 6, $scale = 2);
             */
 
-    protected $fillable = ['author_last_name', 'author_first_name', 'publish_year', 'title', 'subtitle', 'publisher', 'publish_city','publish_state','publish_country', 'description', 'cover', 'stock', 'price'];
+    protected $fillable = ['author_last_name', 'author_first_name', 'publish_year', 'title', 'subtitle', 'publisher', 'publish_city','publish_state','publish_country', 'description', 'cover', 'stock', 'isbn', 'price'];
 }
