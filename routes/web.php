@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 // Single Listing
 Route::get('/book/{id}', function ($id) {
-    return view('/layout/book', [
+    return view('layout.book', [
         'book' => Book::find($id)
     ]);
 });

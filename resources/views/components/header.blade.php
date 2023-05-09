@@ -17,6 +17,7 @@
         {{-- Search Bar --}}
         <div class="flex w-3/4 justify-between space-x-6 p-2 py-2 px-5">
           <form action="" class="w-full">
+            @csrf
             <div class="text-gray-40 relative flex items-center">
               <svg class="pointer-events-none absolute ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -26,7 +27,7 @@
                   clip-rule="evenodd" />
               </svg>
 
-              <input type="text" name="search" placeholder="Find Books..." autocomplete="off"
+              <input type="text" name="search" placeholder="Find books..." autocomplete="off"
                 class="border-non ring-02 w-full rounded-2xl py-2 pr-3 pl-10 text-black placeholder-gray-400 ring-gray-300 focus:ring-2 focus:ring-gray-500">
             </div>
           </form>
