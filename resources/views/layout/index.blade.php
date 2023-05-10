@@ -6,7 +6,10 @@
 <body class="bg-slate-100">
   <x-header class="" />
   <x-hero class="" />
-  <x-listing-table class="" />
+  <x-book-table :books="$books" class="" />
+  <div class="mt-6 p-4">
+    {{ $books->links() }}
+  </div>
   <x-footer class="bg-slate-300" />
 </body>
 

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Listing;
+use App\Models\Book;
 use Illuminate\Database\Seeder;
 use Database\Seeders\ListingSeeder;
 
@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Listing::factory(50)->create();
+        Book::factory(50)->create();
     }
 }

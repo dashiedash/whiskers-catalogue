@@ -2,6 +2,7 @@
 
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Store Page
-Route::get('/', function () {
-    return view('/layout/index', [
-        'books' => Book::all()
-    ]);
-});
+Route::get('/', [BookController::class, 'index']);
 
 
 
 // Single Listing
-Route::get('/book/{id}', function ($id) {
-    return view('layout.book', [
-        'book' => Book::find($id)
-    ]);
-});
+Route::get('/book/{id}', [BookController::class, 'show']);
