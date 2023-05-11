@@ -13,7 +13,10 @@
               </h3>
               <p class="text-sm italic text-slate-600">{{ $book->subtitle }}</p>
             </a>
-            <p class="font-bold my-2">{{ $book->author_first_name }} {{ $book->author_last_name }}</p>
+            <div class="bg-slate-950 px-3 pb-1 w-fit my-1 rounded-full">
+              <span class="text-xs text-white">{{ $book->genre }}</span>
+            </div>
+            <p class="my-2 font-bold">{{ $book->author_first_name }} {{ $book->author_last_name }}</p>
             <p class="my-3 font-bold">$ {{ $book->price }}</p>
           </div>
         </div>

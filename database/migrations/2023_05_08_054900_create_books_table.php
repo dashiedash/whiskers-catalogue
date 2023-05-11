@@ -18,6 +18,7 @@ return new class extends Migration
             $table->year('publish_year');
             $table->string('title');
             $table->string('subtitle')->nullable();
+            $table->string('genre');
             $table->string('publisher');
             $table->string('publish_city');
             $table->string('publish_state');

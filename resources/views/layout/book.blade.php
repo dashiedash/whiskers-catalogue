@@ -38,6 +38,10 @@
                 <td class="p-1">{{ $book->author_first_name }} {{ $book->author_last_name }}</td>
               </tr>
               <tr class="border border-solid border-slate-400">
+                <th class="p-1">Genre</th>
+                <td class="p-1">{{ $book->genre }}</td>
+              </tr>
+              <tr class="border border-solid border-slate-400">
                 <th class="p-1">Store Price</th>
                 <td class="p-1">$ {{ $book->price }} </td>
               </tr>
