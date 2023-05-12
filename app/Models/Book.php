@@ -11,7 +11,10 @@ class Book extends Model
 
     protected $fillable = ['author_last_name', 'author_first_name', 'publish_year', 'title', 'subtitle', 'genre', 'publisher', 'publish_city', 'publish_state', 'publish_country', 'description', 'cover', 'stock', 'isbn', 'price'];
 
-    public function scopeFilter($query, array $filters) {
-
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['genre'] ?? false) {
+            $query->where('genre', 'like', '%' . $filters['genre'] . '%');
+        }
     }
 }
