@@ -4,7 +4,7 @@
 <x-head></x-head>
 
 <body class="bg-slate-100">
-  <x-header class="" />
+  <x-header class="sticky top-0" />
   <x-hero class="" />
   <x-book-table :books="$books" class="" />
   <div class="mt-6 p-4">

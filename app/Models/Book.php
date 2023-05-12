@@ -14,7 +14,7 @@ class Book extends Model
     public function scopeFilter($query, array $filters)
     {
         if ($filters['genre'] ?? false) {
-            $query->where('genre', 'like', '%' . $filters['genre'] . '%');
+            $query->where('tags', 'like', '%' . $filters['genre'] . '%');
         }
     }
 }
