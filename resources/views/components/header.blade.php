@@ -1,6 +1,6 @@
 <header {{ $attributes->class('bg-slate-100') }}>
   <div class="container mx-auto">
-    <nav x-data=" { isOpen: false } " class="">
+    <nav x-data=" { isOpen: false }" class="">
       {{--  Nav Bar --}}
       <div class="flex max-w-screen-xl items-center justify-between">
         {{-- Logo --}}
@@ -69,7 +69,7 @@
           </ul>
         </div>
         {{-- Mobile Menu --}}
-        <div class="md:hidden p-3">
+        <div class="p-3 md:hidden">
           <button type="button"
             aria-label="toggle menu"
             @click="isOpen = !isOpen">
@@ -83,6 +83,11 @@
       </div>
       {{-- Mobile Nav Links --}}
       <div x-show="isOpen" class="items-center md:flex md:hidden">
+        @auth
+          <div class="my-1 mx-5">
+            <p class="uppercase">Hello, {{ auth()->user()->name }} &#128513</p>
+          </div>
+        @endauth
         <ul class="flex flex-col justify-between md:ml-6 md:flex-row">
           <li class="px-3 py-2 hover:bg-slate-300">
             <a href="" class="flex items-center">
@@ -94,6 +99,7 @@
               <span class="font-semibold uppercase">Store</span>
             </a>
           </li>
+
           <li class="px-3 py-2 hover:bg-slate-300">
             <a href="" class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -104,6 +110,7 @@
               <span class="font-semibold uppercase">Cart</span>
             </a>
           </li>
+
           <li class="px-3 py-2 hover:bg-slate-300">
             <a href="/login" class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -115,6 +122,21 @@
               <span class="font-semibold uppercase">Account</span>
             </a>
           </li>
+
+          @auth
+          <li class="px-3 py-2 hover:bg-slate-300">
+            <a href="/login" class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                class="mx-2 h-5 w-5">
+                <path fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-5.5-2.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM10 12a5.99 5.99 0 00-4.793 2.39A6.483 6.483 0 0010 16.5a6.483 6.483 0 004.793-2.11A5.99 5.99 0 0010 12z"
+                  clip-rule="evenodd" />
+              </svg>
+              <span class="font-semibold uppercase">Account</span>
+            </a>
+        </li>
+        @endauth
+
       </div>
     </nav>
   </div>
