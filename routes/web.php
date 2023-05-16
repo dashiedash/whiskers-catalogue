@@ -25,6 +25,9 @@ Route::get('/login', [UserController::class, 'login'])->name('login');
 // Registration Page
 Route::get('/register', [UserController::class, 'create'])->name('register');
 
+// Create New User
+Route::post('/users', [UserController::class, 'store'])->name('register');
+
 
 // Single Listing
 Route::get('/book/{id}', [BookController::class, 'show']);

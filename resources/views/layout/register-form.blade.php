@@ -21,12 +21,12 @@
               <span class="p-1">Back</span>
             </a>
           </div>
-          <form action="{{ route('login') }}" method="POST">
+          <form action="{{ route('register') }}" method="POST">
             @csrf
             {{-- Username --}}
             <div class="mb-4">
               <label for="name" class="my-1 block font-bold text-gray-700">Username</label>
-              <input type="name" name="name" id="namee"
+              <input type="name" name="name" id="name" value="{{ old('name') }}"
                 class="form-input w-full rounded border border-slate-500 p-2" required autofocus>
               @error('name')
                 <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -36,28 +36,30 @@
             {{-- Email --}}
             <div class="mb-4">
               <label for="email" class="my-1 block font-bold text-gray-700">Email</label>
-              <input type="email" name="email" id="email"
+              <input type="email" name="email" id="email" value="{{ old('email') }}"
                 class="form-input w-full rounded border border-slate-500 p-2" required autofocus>
               @error('email')
                 <p class="text-xs italic text-red-500">{{ $message }}</p>
               @enderror
             </div>
 
+            {{-- Password --}}
             <div class="mb-6">
               <label for="password" class="my-1 block font-bold text-gray-700">Password</label>
               <input type="password" name="password" id="password" autocomplete="new-password"
                 class="form-input w-full rounded border border-slate-500 p-2" required>
               @error('password')
-                <p class="text-xs italic text-red-500">{{ $message }}</p>
+                <p class="my-1 text-xs italic text-red-500">{{ $message }}</p>
               @enderror
             </div>
 
+            {{-- Confirm Password --}}
             <div class="mb-6">
-              <label for="password-confirmation" class="my-1 block font-bold text-gray-700">Confirm Password</label>
-              <input type="password" name="password-confirmation" id="password-confirmation" autocomplete="new-password"
+              <label for="password_confirmation" class="my-1 block font-bold text-gray-700">Confirm Password</label>
+              <input type="password" name="password_confirmation" id="password_confirmation" autocomplete="new-password"
                 class="form-input w-full rounded border border-slate-500 p-2" required>
-              @error('password')
-                <p class="text-xs italic text-red-500">{{ $message }}</p>
+              @error('password_confirmation')
+                <p class="my-1 text-xs italic text-red-500">{{ $message }}</p>
               @enderror
             </div>
 
@@ -65,7 +67,7 @@
               <button type="submit" class="rounded bg-teal-700 py-2 px-4 font-bold text-white hover:bg-teal-600">
                 Register
               </button>
-              <p class="text-sm">Already Registered? <a href="/login" class="font-bold text-rose-400">Login here.</a>
+              <p class="text-sm">Already Registered? <a href="/register" class="font-bold text-rose-400">Login here.</a>
               </p>
             </div>
           </form>
