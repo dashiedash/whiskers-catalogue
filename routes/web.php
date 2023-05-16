@@ -25,6 +25,9 @@ Route::get('/login', [UserController::class, 'login'])->name('login');
 // Login User
 Route::post('/users/authenticate', [UserController::class, 'authenticate'])->name('authenticate');
 
+// Logout User
+Route::post('/logout', [UserController::class, 'logout']);
+
 // Registration Page
 Route::get('/register', [UserController::class, 'create'])->name('register');
 
