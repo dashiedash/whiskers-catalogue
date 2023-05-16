@@ -10,4 +10,9 @@ class UserController extends Controller
     {
         return view('layout.login-form');
     }
+
+    public function create()
+    {
+        return view('layout.register-form');
+    }
 }

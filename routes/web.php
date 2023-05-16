@@ -19,8 +19,12 @@ use App\Http\Controllers\UserController;
 // Store Page
 Route::get('/', [BookController::class, 'index'])->name('layout.index');
 
-// Login/Register Page
+// Login Page
 Route::get('/login', [UserController::class, 'login'])->name('login');
+
+// Registration Page
+Route::get('/register', [UserController::class, 'create'])->name('register');
+
 
 // Single Listing
 Route::get('/book/{id}', [BookController::class, 'show']);

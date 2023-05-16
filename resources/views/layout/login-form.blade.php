@@ -24,22 +24,29 @@
           <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="mb-4">
-              <label for="email" class="my-1 block font-bold text-gray-700">Email</label>
-              <input type="email" name="email" id="email"
+              <label for="name" class="my-1 block font-bold text-gray-700">Username</label>
+              <input type="name" name="name" id="name"
                 class="form-input w-full rounded border border-slate-500 p-2" required autofocus>
+              @error('name')
+                <p class="text-xs italic text-red-500">{{ $message }}</p>
+              @enderror
             </div>
 
             <div class="mb-6">
               <label for="password" class="my-1 block font-bold text-gray-700">Password</label>
               <input type="password" name="password" id="password" autocomplete="new-password"
                 class="form-input w-full rounded border border-slate-500 p-2" required>
+              @error('password')
+                <p class="text-xs italic text-red-500">{{ $message }}</p>
+              @enderror
             </div>
 
             <div class="flex items-center justify-between">
-              <button type="submit" class="rounded bg-teal-700 py-2 px-4 font-bold text-white hover:bg-blue-600">
+              <button type="submit" class="rounded bg-teal-700 py-2 px-4 font-bold text-white hover:bg-teal-600">
                 Login
               </button>
-              <p class="text-sm">No account yet? <a href="/" class="text-rose-400 font-bold">Register here.</a></p>
+              <p class="text-sm">No account yet? <a href="/register" class="font-bold text-rose-400">Register here.</a>
+              </p>
             </div>
           </form>
         </div>
