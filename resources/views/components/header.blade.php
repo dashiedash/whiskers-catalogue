@@ -16,7 +16,7 @@
         </div>
         {{-- Search Bar --}}
         <div class="flex w-3/4 justify-between space-x-6 p-2 py-2 px-5">
-          <form action="" class="w-full">
+          <form action="{{ route('layout.index') }}" method="GET" class="w-full">
             @csrf
             <div class="text-gray-40 relative flex items-center">
               <svg class="pointer-events-none absolute ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg"

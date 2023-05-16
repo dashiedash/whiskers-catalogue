@@ -16,7 +16,7 @@ use App\Http\Controllers\BookController;
 */
 
 // Store Page
-Route::get('/', [BookController::class, 'index']);
+Route::get('/', [BookController::class, 'index'])->name('layout.index');
 
 
 

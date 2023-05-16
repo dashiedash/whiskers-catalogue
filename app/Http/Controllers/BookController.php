@@ -13,6 +13,11 @@ class BookController extends Controller
         $genre = request('tag');
         $searchQuery = request('search');
 
+        if ($searchQuery) {
+            $searchQuery = urldecode($searchQuery);
+            $searchQuery = str_replace('+', ' ', $searchQuery);
+        }
+
         $books = Book::latest()
             ->when($genre, function ($query) use ($genre) {
                 return $query->where('genre', $genre);
