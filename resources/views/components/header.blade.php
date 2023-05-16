@@ -36,7 +36,7 @@
         <div class="hidden w-1/2 p-2 md:block">
           <ul class="hidden justify-between md:flex">
             <li class="px-3 py-1">
-              <a href="" class="flex items-center">
+              <a href="/" class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                   class="mx-2 h-5 w-5">
                   <path
@@ -56,7 +56,7 @@
               </a>
             </li>
             <li class="px-3 py-1">
-              <a href="" class="flex items-center">
+              <a href="/login" class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                   class="mx-2 h-5 w-5">
                   <path fill-rule="evenodd"
@@ -105,7 +105,7 @@
             </a>
           </li>
           <li class="px-3 py-2 hover:bg-slate-300">
-            <a href="" class="flex items-center">
+            <a href="/login" class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                 class="mx-2 h-5 w-5">
                 <path fill-rule="evenodd"

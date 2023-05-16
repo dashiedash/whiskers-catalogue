@@ -3,6 +3,7 @@
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,8 @@ use App\Http\Controllers\BookController;
 // Store Page
 Route::get('/', [BookController::class, 'index'])->name('layout.index');
 
-
+// Login/Register Page
+Route::get('/login', [UserController::class, 'login'])->name('login');
 
 // Single Listing
 Route::get('/book/{id}', [BookController::class, 'show']);
