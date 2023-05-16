@@ -22,6 +22,9 @@ Route::get('/', [BookController::class, 'index'])->name('layout.index');
 // Login Page
 Route::get('/login', [UserController::class, 'login'])->name('login');
 
+// Login User
+Route::post('/users/authenticate', [UserController::class, 'authenticate'])->name('authenticate');
+
 // Registration Page
 Route::get('/register', [UserController::class, 'create'])->name('register');
 

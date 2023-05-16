@@ -38,4 +38,21 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'User created and logged in');
     }
+
+    // Authenticate User
+    public function authenticate(Request $request)
+    {
+        $formFields = $request->validate([
+            'name' => ['required'],
+            'password' => 'required',
+        ]);
+
+        if (auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+
+            return redirect('/')->with('message', 'You are now logged in!');
+        }
+
+        return back()->withErrors(['name' => 'Invalid Credentials'])->onlyInput('name');
+    }
 }

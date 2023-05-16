@@ -21,11 +21,11 @@
               <span class="p-1">Back</span>
             </a>
           </div>
-          <form action="{{ route('login') }}" method="POST">
+          <form action="{{ route('authenticate') }}" method="POST">
             @csrf
             <div class="mb-4">
               <label for="name" class="my-1 block font-bold text-gray-700">Username</label>
-              <input type="name" name="name" id="name"
+              <input type="name" name="name" id="name" value="{{ old('name') }}"
                 class="form-input w-full rounded border border-slate-500 p-2" required autofocus>
               @error('name')
                 <p class="text-xs italic text-red-500">{{ $message }}</p>
