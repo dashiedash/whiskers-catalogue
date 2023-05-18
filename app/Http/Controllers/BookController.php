@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Database\Factories\BookFactory;
 
 class BookController extends Controller
 {
@@ -47,6 +48,13 @@ class BookController extends Controller
     // Show create book form
     public function create()
     {
-        return view('books.create');
+        $genres = BookFactory::GENRES;
+
+        return view('books.create', compact('genres'));
+    }
+
+    // Store book
+    public function store(Request $request)
+    {
     }
 }
