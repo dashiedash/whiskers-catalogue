@@ -34,6 +34,9 @@ Route::get('/register', [UserController::class, 'create'])->name('register');
 // Create New User
 Route::post('/users', [UserController::class, 'store'])->name('register');
 
+// Show Book Creation Form
+Route::get('/book/create', [BookController::class, 'create'])->name('book-create');
+
 
 // Single Listing
 Route::get('/book/{id}', [BookController::class, 'show']);

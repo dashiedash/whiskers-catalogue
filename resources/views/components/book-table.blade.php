@@ -1,10 +1,5 @@
 <main>
   <div class="container my-7 mx-auto max-w-screen-xl rounded-lg">
-    @auth
-      <div class="my-1 mx-5 hidden md:block">
-        <p class="uppercase">Hello, {{ auth()->user()->name }} &#128513</p>
-      </div>
-    @endauth
     @if (request('tag') || request('search'))
       <div class="m-3 flex items-center justify-between">
         <p>Searching for "{{ request('tag') ?? request('search') }}"...</p>

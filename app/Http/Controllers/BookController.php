@@ -39,8 +39,14 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        return view('layout.book', [
+        return view('books.book', [
             'book' => $book,
         ]);
+    }
+
+    // Show create book form
+    public function create()
+    {
+        return view('books.create');
     }
 }

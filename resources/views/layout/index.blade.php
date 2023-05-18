@@ -6,6 +6,7 @@
 <body class="bg-slate-100">
   <x-header class="sticky top-0" />
   <x-hero class="" />
+  <x-create-button />
   <x-book-table :books="$books" class="" />
   <div class="mt-6 p-4">
     {{ $books->links() }}
