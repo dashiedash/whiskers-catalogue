@@ -1,5 +1,10 @@
 <main>
   <div class="container my-7 mx-auto max-w-screen-xl rounded-lg">
+    @auth
+      <div class="my-1 mx-5 hidden md:block">
+        <p class="uppercase">Hello, {{ auth()->user()->name }} &#128513</p>
+      </div>
+    @endauth
     @if (request('tag') || request('search'))
       <div class="m-3 flex items-center justify-between">
         <p>Searching for "{{ request('tag') ?? request('search') }}"...</p>
@@ -18,7 +23,7 @@
         <p>We don't have "{{ request('tag') }}" books yet. Sorry :(</p>
       @else
         @foreach ($books as $book)
-          <div class="m-3 flex w-full items-center bg-white p-7 md:w-2/5">
+          <div class="m-3 flex w-full bg-white p-7 shadow-lg md:w-2/5">
             <div class="w-1/4">
               <img class="w-full" src="\images\default-cover.png" alt="" />
             </div>

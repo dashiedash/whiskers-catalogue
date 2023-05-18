@@ -67,7 +67,7 @@
               <button type="submit" class="rounded bg-teal-700 py-2 px-4 font-bold text-white hover:bg-teal-600">
                 Register
               </button>
-              <p class="text-sm">Already Registered? <a href="/register" class="font-bold text-rose-400">Login here.</a>
+              <p class="text-sm">Already Registered? <a href="/login" class="font-bold text-rose-400">Login here.</a>
               </p>
             </div>
           </form>

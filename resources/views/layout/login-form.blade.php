@@ -45,7 +45,7 @@
               <button type="submit" class="rounded bg-teal-700 py-2 px-4 font-bold text-white hover:bg-teal-600">
                 Login
               </button>
-              <p class="text-sm">No account yet? <a href="/login" class="font-bold text-rose-400">Register here.</a>
+              <p class="text-sm">No account yet? <a href="/register" class="font-bold text-rose-400">Register here.</a>
               </p>
             </div>
           </form>

@@ -140,8 +140,6 @@
                   <span class="font-semibold uppercase">Logout</span>
                 </button>
               </form>
-              {{-- <a href="/login" class="flex items-center">
-              <span class="font-semibold uppercase">Logout</span> --}}
               </a>
             </li>
           @endauth
