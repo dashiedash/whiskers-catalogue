@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Database\Factories\BookFactory;
 
 class BookController extends Controller
@@ -56,5 +57,22 @@ class BookController extends Controller
     // Store book
     public function store(Request $request)
     {
+        $formFields = $request->validate([
+            'author_last_name' => 'required',
+            'author_first_name' => 'required',
+            'publish_year' => 'required',
+            'title' => 'required',
+            'genre' => 'required',
+            'publisher' => 'required',
+            'publish_city' => 'required',
+            'publish_state' => 'required',
+            'publish_country' => 'required',
+            'description' => 'required',
+            'isbn' => ['required', Rule::unique('books', 'isbn')],
+            'stock' => 'required',
+            'price' => 'required'
+        ]);
+
+        return redirect('/');
     }
 }

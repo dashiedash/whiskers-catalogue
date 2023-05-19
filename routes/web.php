@@ -38,7 +38,7 @@ Route::post('/users', [UserController::class, 'store'])->name('register');
 Route::get('/book/create', [BookController::class, 'create'])->name('book-create');
 
 // Store books
-Route::post('/book' , [BookController::class, 'store'])->name('book-store');
+Route::post('/book', [BookController::class, 'store']);
 
 
 // Single Listing
