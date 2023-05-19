@@ -60,7 +60,7 @@ class BookController extends Controller
         $formFields = $request->validate([
             'author_last_name' => 'required',
             'author_first_name' => 'required',
-            'publish_year' => 'required',
+            'publish_year' => ['required', 'numeric', 'digits:4', 'gte:1899', 'lte:' . date('Y')],
             'title' => 'required',
             'genre' => 'required',
             'publisher' => 'required',
@@ -70,8 +70,16 @@ class BookController extends Controller
             'description' => 'required',
             'isbn' => ['required', Rule::unique('books', 'isbn')],
             'stock' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'cover' => 'nullable|image|mimes:jpeg|max:2048',
         ]);
+
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('covers');
+            $formFields['cover'] = $coverPath;
+        }
+
+        Book::create($formFields);
 
         return redirect('/');
     }

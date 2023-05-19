@@ -7,7 +7,8 @@
   <x-header class="sticky top-0" />
 
   <div class="container p-7">
-    <form action="{{ '/book' }}" method="POST" class="mx-auto max-w-md rounded bg-white p-11 shadow">
+    <form action="{{ '/book' }}" method="POST" enctype="multipart/form-data"
+      class="mx-auto max-w-md rounded bg-white p-11 shadow">
       @csrf
       <div class="my-3 flex items-center justify-between">
         <h2 class="text-2xl font-bold">Create a book</h2>
@@ -162,6 +163,15 @@
           value="{{ old('price') }}"
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('price')
+          <p class="text-xs italic text-red-500">{{ $message }}</p>
+        @enderror
+      </div>
+
+      {{-- Add Cover --}}
+      <div class="mb-4">
+        <label for="cover" class="mb-2 block font-bold text-gray-700">Add Cover</label>
+        <input type="file" name="cover" id="cover" accept=".jpg,.jpeg" class="form-input">
+        @error('cover')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
         @enderror
       </div>
