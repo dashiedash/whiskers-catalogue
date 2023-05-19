@@ -7,8 +7,8 @@
   <x-header class="sticky top-0" />
 
   <main>
-    <div class="container my-7 mx-auto max-w-screen-xl">
-      <div class="flex h-screen items-center justify-center">
+    <div class="container my-14 mx-auto max-w-screen-xl">
+      <div class="flex justify-center">
         <div class="w-96 rounded-lg bg-white p-8 shadow-lg">
           <div class="mb-8 flex items-center justify-between">
             <h2 class="text-2xl font-bold">Login</h2>
@@ -53,8 +53,6 @@
       </div>
     </div>
   </main>
-
-  <x-footer class="bg-slate-300" />
 </body>
 
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

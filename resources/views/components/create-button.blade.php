@@ -1,4 +1,4 @@
-<div class="container my-7 w-full max-w-screen-xl rounded-lg px-3">
+<div class="container my-7 mx-auto w-full max-w-screen-xl rounded-lg px-3">
   <div class="flex flex-row-reverse justify-between">
     @auth
       <div class="">
