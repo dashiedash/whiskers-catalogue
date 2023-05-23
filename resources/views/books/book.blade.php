@@ -18,9 +18,11 @@
       </a>
       <div class="flex">
         <div class="w-1/4">
-          <img class="w-full" src="\images\default-cover.png" alt="" />
+          <img class="w-full"
+            src="{{ $book->cover ? asset('storage/' . $book->cover) : asset('images\default-cover.png') }}"
+            alt="" />
         </div>
-        <div class="w-3/4 px-3">
+        <div class="w-3/4 px-7">
           <h3 class="text-xl font-bold">{{ $book->title }}</h3>
           <p class="text-sm italic text-slate-600">{{ $book->subtitle }}</p>
           <p class="font-bold">{{ $book->author_first_name }} {{ $book->author_last_name }}</p>

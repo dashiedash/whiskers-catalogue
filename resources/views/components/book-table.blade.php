@@ -20,7 +20,9 @@
         @foreach ($books as $book)
           <div class="m-3 flex w-full bg-white p-7 shadow-lg md:w-2/5">
             <div class="w-1/4">
-              <img class="w-full" src="\images\default-cover.png" alt="" />
+              <img class="w-full"
+                src="{{ $book->cover ? asset('storage/' . $book->cover) : asset('images\default-cover.png') }}"
+                alt="" />
             </div>
             <div class="w-3/4 px-3">
               <a href="book/{{ $book['id'] }}">

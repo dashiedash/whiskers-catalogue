@@ -27,7 +27,7 @@ class BookFactory extends Factory
             'publish_country' => $this->faker->country,
             'description' => $this->faker->paragraph(5),
             'stock' => $this->faker->numberBetween($min = 0, $max = 50),
-            'isbn' => $this->faker->numberBetween($min = 1000000000, $max = 9999999999),
+            'isbn' => $this->faker->numberBetween($min = 1000000000000, $max = 9999999999999),
             'price' => $this->faker->numberBetween($min = 10, $max = 200),
         ];
     }

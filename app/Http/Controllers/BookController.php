@@ -75,8 +75,7 @@ class BookController extends Controller
         ]);
 
         if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')->store('covers');
-            $formFields['cover'] = $coverPath;
+            $formFields['cover'] = $request->file('cover')->store('covers', 'public');
         }
 
         Book::create($formFields);

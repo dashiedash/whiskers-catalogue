@@ -127,7 +127,7 @@
       {{-- Description --}}
       <div class="mb-4">
         <label for="description" class="mb-2 block font-bold text-gray-700">Description</label>
-        <textarea name="description" id="description" value="{{ old('description') }}" rows="7"
+        <textarea name="description" id="description" value="{{ old('description') }}" rows="9"
           class="form-input w-full rounded border border-slate-500 p-2"></textarea>
         @error('description')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -137,7 +137,7 @@
       {{-- ISBN --}}
       <div class="mb-4">
         <label for="isbn" class="mb-2 block font-bold text-gray-700">ISBN</label>
-        <input type="number" min="1000000000" max="9999999999" name="isbn" id="isbn"
+        <input type="number" min="1000000000000" max="9999999999999" name="isbn" id="isbn"
           value="{{ old('isbn') }}"
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('isbn')
