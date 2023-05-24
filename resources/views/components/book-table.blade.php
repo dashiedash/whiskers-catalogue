@@ -37,27 +37,34 @@
               </div>
               <p class="my-2 font-bold">{{ $book->author_first_name }} {{ $book->author_last_name }}</p>
               <p class="my-3 font-bold">$ {{ $book->price }}</p>
-              <template x-if="!showQuantityField.includes({{ $book->id }})">
-                <!-- Show the quantity field on button click -->
-                <button @click="showQuantityField.push({{ $book->id }})"
-                  class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
-                  Add to Cart
-                </button>
-              </template>
-              <template x-if="showQuantityField.includes({{ $book->id }})">
-                <!-- Add quantity input field -->
-                <form action="/cart" method="POST" class="flex items-center" @click.away="showQuantityField = []">
-                  @csrf
-                  <input type="hidden" name="book_id" value="{{ $book->id }}">
-                  <input type="number" name="quantity"
-                    class="w-1/2 mr-0 rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-2 text-gray-800"
-                    placeholder="Quantity" required min="1">
-                  <button type="submit"
-                    class="rounded-r-lg bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
+
+              @if ($book->stock > 0)
+                <template x-if="!showQuantityField.includes({{ $book->id }})">
+                  <!-- Show the quantity field on button click -->
+                  <button @click="showQuantityField.push({{ $book->id }})"
+                    class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
                     Add to Cart
                   </button>
-                </form>
-              </template>
+                </template>
+                <template x-if="showQuantityField.includes({{ $book->id }})">
+                  <!-- Add quantity input field -->
+                  <form action="/cart" method="POST" class="flex items-center" @click.away="showQuantityField = []">
+                    @csrf
+                    <input type="hidden" name="book_id" value="{{ $book->id }}">
+                    <input type="number" name="quantity"
+                      class="mr-0 w-1/2 rounded-l-lg border-y border-l border-gray-200 bg-white p-2 text-gray-800"
+                      placeholder="Quantity" required min="1" max="{{ $book->stock }}"">
+                    <button type="submit"
+                      class="rounded-r-lg bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
+                      Add to Cart
+                    </button>
+                  </form>
+                </template>
+              @else
+                <button class="rounded-full bg-gray-300 py-2 px-4 font-bold text-white" disabled>
+                  Out of Stock :(
+                </button>
+              @endif
             </div>
           </div>
         @endforeach
