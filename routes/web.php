@@ -52,4 +52,4 @@ Route::get('/{name}/cart', [CartController::class, 'show']);
 
 
 // Single Listing
-Route::get('/book/{id}', [BookController::class, 'show']);
+Route::get('/book/{id}', [BookController::class, 'show'])->name('book-show');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -10,7 +11,12 @@ class CartController extends Controller
     // Show page
     public function show($name)
     {
-        return view('layout.cart');
+        $user = User::where('name', $name)->first();
+        $cartItems = $user
+            ->cartItems()
+            ->with('book')
+            ->get();
+        return view('layout.cart', compact('cartItems'));
     }
 
     // Add book to Cart
