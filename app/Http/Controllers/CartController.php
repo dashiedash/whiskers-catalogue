@@ -25,6 +25,18 @@ class CartController extends Controller
         $user = auth()->user();
         $bookId = $request->input('book_id');
 
+        // Check if the book already exists in the cart
+        $existingCartItem = Cart::where('user_id', $user->id)
+            ->where('book_id', $bookId)
+            ->first();
+
+        // If the book already exists, show a message or handle the situation as needed
+        if ($existingCartItem) {
+            return redirect()
+                ->back()
+                ->with('error', 'Book is already in the cart.');
+        }
+
         $cart = new Cart();
         $cart->user_id = $user->id;
         $cart->book_id = $bookId;
