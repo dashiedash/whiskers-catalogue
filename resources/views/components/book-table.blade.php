@@ -1,4 +1,4 @@
-<main>
+<main x-data="{ showQuantityField: [] }">
   <div class="container my-7 mx-auto max-w-screen-xl rounded-lg">
     @if (request('tag') || request('search'))
       <div class="m-3 flex items-center justify-between">
@@ -37,13 +37,27 @@
               </div>
               <p class="my-2 font-bold">{{ $book->author_first_name }} {{ $book->author_last_name }}</p>
               <p class="my-3 font-bold">$ {{ $book->price }}</p>
-              <form action="/cart" method="POST">
-                @csrf
-                <input type="hidden" name="book_id" value="{{ $book->id }}">
-                <button type="submit" class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
+              <template x-if="!showQuantityField.includes({{ $book->id }})">
+                <!-- Show the quantity field on button click -->
+                <button @click="showQuantityField.push({{ $book->id }})"
+                  class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
                   Add to Cart
                 </button>
-              </form>
+              </template>
+              <template x-if="showQuantityField.includes({{ $book->id }})">
+                <!-- Add quantity input field -->
+                <form action="/cart" method="POST" class="flex items-center" @click.away="showQuantityField = []">
+                  @csrf
+                  <input type="hidden" name="book_id" value="{{ $book->id }}">
+                  <input type="number" name="quantity"
+                    class="w-1/2 mr-0 rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-2 text-gray-800"
+                    placeholder="Quantity" required min="1">
+                  <button type="submit"
+                    class="rounded-r-lg bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
+                    Add to Cart
+                  </button>
+                </form>
+              </template>
             </div>
           </div>
         @endforeach

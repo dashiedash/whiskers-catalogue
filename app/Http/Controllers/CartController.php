@@ -24,6 +24,7 @@ class CartController extends Controller
     {
         $user = auth()->user();
         $bookId = $request->input('book_id');
+        $quantity = $request->input('quantity', 1);
 
         // Check if the book already exists in the cart
         $existingCartItem = Cart::where('user_id', $user->id)
@@ -40,6 +41,7 @@ class CartController extends Controller
         $cart = new Cart();
         $cart->user_id = $user->id;
         $cart->book_id = $bookId;
+        $cart->quantity = $quantity;
 
         $cart->save();
 
