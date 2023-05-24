@@ -37,6 +37,13 @@
               </div>
               <p class="my-2 font-bold">{{ $book->author_first_name }} {{ $book->author_last_name }}</p>
               <p class="my-3 font-bold">$ {{ $book->price }}</p>
+              <form action="/cart" method="POST">
+                @csrf
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                <button type="submit" class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
+                  Add to Cart
+                </button>
+              </form>
             </div>
           </div>
         @endforeach

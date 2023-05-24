@@ -41,6 +41,9 @@ Route::get('/book/create', [BookController::class, 'create'])->name('book-create
 // Store books
 Route::post('/book', [BookController::class, 'store']);
 
+// Add book to cart
+Route::post('/cart', [CartController::class, 'store']);
+
 
 
 // Show cart
