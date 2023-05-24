@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="px-1 py-1">
-              <a href="" class="flex items-center">
+              <a href="/{{ auth()->user()->name }}/cart" class="flex items-center">
                 <i class="fa-solid fa-cart-shopping mx-1 text-sm"></i>
                 <span class="text-sm font-semibold uppercase">Cart</span>
               </a>
@@ -96,7 +96,7 @@
           </li>
 
           <li class="px-3 py-2 hover:bg-slate-300">
-            <a href="" class="flex items-center">
+            <a href="/{{ auth()->user()->name }}/cart" class="flex items-center">
               <i class="fa-solid fa-cart-shopping mx-2 text-sm"></i>
               <span class="text-sm font-semibold uppercase">Cart</span>
             </a>

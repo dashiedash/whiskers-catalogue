@@ -3,6 +3,7 @@
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -39,6 +40,12 @@ Route::get('/book/create', [BookController::class, 'create'])->name('book-create
 
 // Store books
 Route::post('/book', [BookController::class, 'store']);
+
+
+
+// Show cart
+Route::get('/{name}/cart', [CartController::class, 'show']);
+
 
 
 // Single Listing
