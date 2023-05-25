@@ -18,6 +18,7 @@
         <p>We don't have "{{ request('tag') }}" books yet. Sorry :(</p>
       @else
         @foreach ($books as $book)
+          {{-- Book Card --}}
           <div class="m-3 flex w-full bg-white p-7 shadow-lg md:w-2/5">
             <div class="w-1/4">
               <img class="w-full"
@@ -40,14 +41,23 @@
 
               @if ($book->stock > 0)
                 <template x-if="!showQuantityField.includes({{ $book->id }})">
-                  <!-- Show the quantity field on button click -->
-                  <button @click="showQuantityField.push({{ $book->id }})"
-                    class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
-                    Add to Cart
-                  </button>
+
+                  {{-- Show the quantity field on button click --}}
+                  @auth
+                    <button @click="showQuantityField.push({{ $book->id }})"
+                      class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
+                      Add to Cart
+                    </button>
+                  @else
+                    <a href="{{ route('login') }}"
+                      class="rounded-full bg-rose-500 py-2 px-4 font-bold text-white hover:bg-rose-700">
+                      Add to Cart
+                    </a>
+                  @endauth
                 </template>
                 <template x-if="showQuantityField.includes({{ $book->id }})">
-                  <!-- Add quantity input field -->
+
+                  {{-- Book Quantity input field --}}
                   <form action="/cart" method="POST" class="flex items-center" @click.away="showQuantityField = []">
                     @csrf
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
