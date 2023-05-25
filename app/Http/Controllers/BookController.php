@@ -41,6 +41,7 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
+
         return view('books.book', [
             'book' => $book,
         ]);
@@ -81,5 +82,50 @@ class BookController extends Controller
         Book::create($formFields);
 
         return redirect('/');
+    }
+
+    // Show edit book form
+    public function edit($id)
+    {
+        $book = Book::find($id);
+        $genres = BookFactory::GENRES;
+
+        return view('books.edit', [
+            'book' => $book,
+            'genres' => $genres,
+        ]);
+    }
+
+    // Update Book
+    public function update(Request $request, $id)
+    {
+        $formFields = $request->validate([
+            'author_last_name' => 'required',
+            'author_first_name' => 'required',
+            'publish_year' => ['required', 'numeric', 'digits:4', 'gte:1899', 'lte:' . date('Y')],
+            'title' => 'required',
+            'genre' => 'required',
+            'publisher' => 'required',
+            'publish_city' => 'required',
+            'publish_state' => 'required',
+            'publish_country' => 'required',
+            'description' => 'required',
+            'isbn' => 'required',
+            'stock' => 'required',
+            'price' => 'required',
+            'cover' => 'nullable|image|mimes:jpeg|max:2048',
+        ]);
+
+        if ($request->hasFile('cover')) {
+            $formFields['cover'] = $request->file('cover')->store('covers', 'public');
+        }
+
+        $book = Book::findOrFail($id);
+
+        $book->update($formFields);
+
+        return redirect()
+            ->route('books.show', $book->id)
+            ->with('success', 'Book information updated successfully');
     }
 }

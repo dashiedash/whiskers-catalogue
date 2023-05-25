@@ -50,7 +50,7 @@ class UserController extends Controller
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('message', 'You are now logged in!');
+            return redirect('/')->with('success', 'You are now logged in!');
         }
 
         return back()
@@ -66,6 +66,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'User logged out.');
+        return redirect('/')->with('success', 'User logged out.');
     }
 }

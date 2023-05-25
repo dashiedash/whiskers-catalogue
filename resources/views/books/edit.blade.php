@@ -7,11 +7,12 @@
   <x-header class="sticky top-0" />
 
   <div class="container p-7">
-    <form action="{{ '/book' }}" method="POST" enctype="multipart/form-data"
+    <form action="{{ route('books.update', $book->id) }}" method="POST" enctype="multipart/form-data"
       class="mx-auto max-w-md rounded bg-white p-11 shadow">
       @csrf
+      <input type="hidden" name="_method" value="PUT">
       <div class="my-3 flex items-center justify-between">
-        <h2 class="text-2xl font-bold">Create a book</h2>
+        <h2 class="text-2xl font-bold">Update "{{ $book->title }}"</h2>
         <a href="/" class="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
             <path fill-rule="evenodd"
@@ -24,7 +25,8 @@
       {{-- Author's Last Name --}}
       <div class="mb-4">
         <label for="author_last_name" class="mb-2 block font-bold text-gray-700">Author's Last Name</label>
-        <input type="text" name="author_last_name" id="author_last_name" value="{{ old('author_last_name') }}" required
+        <input type="text" name="author_last_name" id="author_last_name" value="{{ $book->author_last_name }}"
+          required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('author_last_name')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -34,7 +36,8 @@
       {{-- Author's First Name --}}
       <div class="mb-4">
         <label for="author_first_name" class="mb-2 block font-bold text-gray-700">Author's First Name</label>
-        <input type="text" name="author_first_name" id="author_first_name" value="{{ old('author_last_name') }}" required
+        <input type="text" name="author_first_name" id="author_first_name" value="{{ $book->author_first_name }}"
+          required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('author_first_name')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -45,7 +48,7 @@
       <div class="mb-4">
         <label for="publish_year" class="mb-2 block font-bold text-gray-700">Year Published</label>
         <input type="number" min="1900" max="{{ date('Y') }}" name="publish_year"
-          value="{{ old('publish_year') }}" id="publish_year" required
+          value="{{ $book->publish_year }}" id="publish_year" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('publish-year')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -55,7 +58,7 @@
       {{-- Title --}}
       <div class="mb-4">
         <label for="title" class="mb-2 block font-bold text-gray-700">Title</label>
-        <input type="text" name="title" id="title" value="{{ old('title') }}" required
+        <input type="text" name="title" id="title" value="{{ $book->title }}" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('title')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -66,17 +69,17 @@
       <div class="mb-4">
         <label for="subtitle" class="mb-2 block font-bold text-gray-700">Subtitle <span
             class="align-top text-xs font-normal italic">(optional)</span> </label>
-        <input type="text" name="subtitle" id="subtitle" value="{{ old('subtitle') }}"
+        <input type="text" name="subtitle" id="subtitle" value="{{ $book->subtitle }}"
           class="form-input w-full rounded border border-slate-500 p-2">
       </div>
 
       {{-- Genre  --}}
       <div class="mb-4">
         <label for="genre" class="mb-2 block font-bold text-gray-700">Genre</label>
-        <select name="genre" id="genre" value="{{ old('genre') }}" required
-          class="form-select w-full rounded border border-slate-500 p-2">
+        <select name="genre" id="genre" required class="form-select w-full rounded border border-slate-500 p-2">
           @foreach ($genres as $genre)
-            <option value="{{ $genre }}">{{ $genre }}</option>
+            <option value="{{ $genre }}" {{ $genre === $book->genre ? 'selected' : '' }}>{{ $genre }}
+            </option>
           @endforeach
         </select>
         @error('genre')
@@ -87,7 +90,7 @@
       {{-- Publisher --}}
       <div class="mb-4">
         <label for="publisher" class="mb-2 block font-bold text-gray-700">Publisher</label>
-        <input type="text" name="publisher" id="publisher" value="{{ old('publisher') }}" required
+        <input type="text" name="publisher" id="publisher" value="{{ $book->publisher }}" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('publisher')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -97,7 +100,7 @@
       {{-- Publisher City --}}
       <div class="mb-4">
         <label for="publish_city" class="mb-2 block font-bold text-gray-700">City</label>
-        <input type="text" name="publish_city" id="publish_city" value="{{ old('publish_city') }}" required
+        <input type="text" name="publish_city" id="publish_city" value="{{ $book->publish_city }}" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('publish_city')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -107,7 +110,7 @@
       {{-- Publisher State --}}
       <div class="mb-4">
         <label for="publish_state" class="mb-2 block font-bold text-gray-700">State/Province</label>
-        <input type="text" name="publish_state" id="publish_state" value="{{ old('publish_state') }}" required
+        <input type="text" name="publish_state" id="publish_state" value="{{ $book->publish_state }}" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('publish_city')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -117,7 +120,8 @@
       {{-- Publisher Country --}}
       <div class="mb-4">
         <label for="publish_country" class="mb-2 block font-bold text-gray-700">Country</label>
-        <input type="text" name="publish_country" id="publish_country" value="{{ old('publish_country') }}" required
+        <input type="text" name="publish_country" id="publish_country" value="{{ $book->publish_country }}"
+          required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('publish_country')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -127,8 +131,8 @@
       {{-- Description --}}
       <div class="mb-4">
         <label for="description" class="mb-2 block font-bold text-gray-700">Description</label>
-        <textarea name="description" id="description" rows="15" required
-          class="form-input w-full rounded border border-slate-500 p-2">{{ old('description') }}</textarea>
+        <textarea name="description" id="description" required rows="15"
+          class="form-input w-full rounded border border-slate-500 p-2">{{ $book->description }}</textarea>
         @error('description')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
         @enderror
@@ -138,7 +142,7 @@
       <div class="mb-4">
         <label for="isbn" class="mb-2 block font-bold text-gray-700">ISBN</label>
         <input type="number" min="1000000000000" max="9999999999999" name="isbn" id="isbn"
-          value="{{ old('isbn') }}" required
+          value="{{ $book->isbn }}" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('isbn')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -149,7 +153,7 @@
       <div class="mb-4">
         <label for="stock" class="mb-2 block font-bold text-gray-700">Stock Available</label>
         <input type="number" min="0" max="50" name="stock" id="stock"
-          value="{{ old('stock') }}" required
+          value="{{ $book->stock }}" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('stock')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -160,7 +164,7 @@
       <div class="mb-4">
         <label for="price" class="mb-2 block font-bold text-gray-700">Price</label>
         <input type="number" min="10" max="200" name="price" id="price"
-          value="{{ old('price') }}" required
+          value="{{ $book->price }}" required
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('price')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
@@ -170,7 +174,8 @@
       {{-- Add Cover --}}
       <div class="mb-4">
         <label for="cover" class="mb-2 block font-bold text-gray-700">Add Cover</label>
-        <input type="file" name="cover" id="cover" accept=".jpg,.jpeg" class="form-input">
+        <input type="file" name="cover" id="cover" accept=".jpg,.jpeg" value="{{ $book->cover }}"
+          class="form-input">
         @error('cover')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
         @enderror
@@ -178,7 +183,7 @@
 
       <div class="flex justify-end">
         <button type="submit" class="rounded bg-teal-700 py-2 px-4 font-bold text-white hover:bg-teal-600">
-          Add Book
+          Update Book
         </button>
       </div>
     </form>

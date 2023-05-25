@@ -17,4 +17,9 @@ class Book extends Model
             $query->where('tags', 'like', '%' . $filters['genre'] . '%');
         }
     }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

@@ -3,6 +3,7 @@
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -40,6 +41,22 @@ Route::get('/book/create', [BookController::class, 'create'])->name('book-create
 // Store books
 Route::post('/book', [BookController::class, 'store']);
 
+// Add book to cart
+Route::post('/cart', [CartController::class, 'store']);
+
+// Show Edit Form
+Route::get('/book/{id}/edit', [BookController::class, 'edit']);
+
+// Edit Books
+Route::put('/book/{id}', [BookController::class, 'update'])->name('books.update');
+
+
+
+
+// Show cart
+Route::get('/{name}/cart', [CartController::class, 'show']);
+
+
 
 // Single Listing
-Route::get('/book/{id}', [BookController::class, 'show']);
+Route::get('/book/{id}', [BookController::class, 'show'])->name('books.show');
