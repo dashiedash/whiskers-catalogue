@@ -44,6 +44,13 @@ Route::post('/book', [BookController::class, 'store']);
 // Add book to cart
 Route::post('/cart', [CartController::class, 'store']);
 
+// Show Edit Form
+Route::get('/book/{id}/edit', [BookController::class, 'edit']);
+
+// Edit Books
+Route::put('/book/{id}', [BookController::class, 'update'])->name('books.update');
+
+
 
 
 // Show cart
@@ -52,4 +59,4 @@ Route::get('/{name}/cart', [CartController::class, 'show']);
 
 
 // Single Listing
-Route::get('/book/{id}', [BookController::class, 'show'])->name('book-show');
+Route::get('/book/{id}', [BookController::class, 'show'])->name('books.show');
