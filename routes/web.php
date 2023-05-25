@@ -45,7 +45,7 @@ Route::post('/book', [BookController::class, 'store']);
 Route::post('/cart', [CartController::class, 'store']);
 
 // Show Edit Form
-Route::get('/book/{id}/edit', [BookController::class, 'edit']);
+Route::get('/book/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
 
 // Edit Books
 Route::put('/book/{id}', [BookController::class, 'update'])->name('books.update');
