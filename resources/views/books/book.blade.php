@@ -8,7 +8,7 @@
 
   <main>
     <div class="container mx-auto my-7 rounded-lg bg-white p-7">
-      <div class="flex justify-between items-center my-3">
+      <div class="my-3 flex items-center justify-between">
         <a href="#" onclick="history.back()" class="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
             <path fill-rule="evenodd"
@@ -17,12 +17,22 @@
           </svg>
           <span class="p-1">Back</span>
         </a>
+        <div class="flex space-x-3">
         @auth
           <a href="{{ route('books.edit', $book->id) }}"
-            class="text-sm py-2 px-5 bg-teal-500 hover:bg-teal-400 rounded text-white font-bold">
-            Edit Book
+            class="rounded bg-teal-500 py-2 px-5 text-sm font-bold text-white hover:bg-teal-400">
+            Edit
           </a>
+          <form action="/book/{{ $book->id }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+              class="rounded bg-rose-500 py-2 px-5 text-sm font-bold text-white hover:bg-rose-700">
+              Delete
+            </button>
+          </form>
         @endauth
+        </div>
       </div>
       <div class="flex">
         <div class="w-1/4">
