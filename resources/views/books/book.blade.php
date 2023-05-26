@@ -18,20 +18,21 @@
           <span class="p-1">Back</span>
         </a>
         <div class="flex space-x-3">
-        @auth
-          <a href="{{ route('books.edit', $book->id) }}"
-            class="rounded bg-teal-500 py-2 px-5 text-sm font-bold text-white hover:bg-teal-400">
-            Edit
-          </a>
-          <form action="/book/{{ $book->id }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit"
-              class="rounded bg-rose-500 py-2 px-5 text-sm font-bold text-white hover:bg-rose-700">
-              Delete
-            </button>
-          </form>
-        @endauth
+          @auth
+            <a href="{{ route('books.edit', $book->id) }}"
+              class="rounded bg-teal-500 py-2 px-5 text-sm font-bold text-white hover:bg-teal-400">
+              Edit
+            </a>
+            <form action="{{ route('books.destroy', $book->id) }}" method="POST"
+              onsubmit="return confirm('Are you sure you want to delete this book?')">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="rounded bg-rose-500 py-2 px-5 text-sm font-bold text-white hover:bg-rose-700">
+                Delete
+              </button>
+            </form>
+
+          @endauth
         </div>
       </div>
       <div class="flex">

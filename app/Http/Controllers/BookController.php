@@ -128,4 +128,11 @@ class BookController extends Controller
             ->route('books.show', $book->id)
             ->with('success', 'Book information updated successfully');
     }
-}
+
+    // Delete Book
+    public function destroy(Book $book)
+    {
+        $book->delete();
+
+        return redirect('/')->with('success', 'Book deleted successfully');
+    }}

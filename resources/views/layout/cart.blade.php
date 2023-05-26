@@ -29,7 +29,7 @@
                 alt="" />
             </div>
             <div class="w-3/4 px-3">
-              <a href="{{ route('book-show', ['id' => $cartItem->book->id]) }}"">
+              <a href="{{ route('books.show', ['id' => $cartItem->book->id]) }}"">
                 <h3 class="text-lg font-bold">
                   {{ $cartItem->book->title }}
                 </h3>
@@ -42,6 +42,15 @@
               <p class="my-2 font-bold">{{ $cartItem->book->author_first_name }} {{ $cartItem->book->author_last_name }}
               </p>
               <p class="my-3 font-bold">$ {{ $cartItem->book->price }}</p>
+
+              <form action="{{ route('cart.remove', ['id' => $cartItem->id]) }}" method="POST" class="mt-4">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                  class="rounded bg-rose-500 py-2 px-3 text-sm font-bold text-white hover:bg-rose-400">
+                  Remove
+                </button>
+              </form>
             </div>
           </div>
         @empty

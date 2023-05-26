@@ -49,4 +49,29 @@ class CartController extends Controller
             ->back()
             ->with('success', 'Book added to cart.');
     }
+
+    // Remove book from Cart
+    public function destroy($id)
+    {
+        $user = auth()->user();
+
+        // Find the cart item belonging to the user
+        $cartItem = Cart::where('user_id', $user->id)
+            ->where('id', $id)
+            ->first();
+
+        // If the cart item exists, delete it
+        if ($cartItem) {
+            $cartItem->delete();
+
+            return redirect()
+                ->back()
+                ->with('success', 'Book removed from cart.');
+        }
+
+        // If the cart item doesn't exist, show an error message or handle the situation as needed
+        return redirect()
+            ->back()
+            ->with('error', 'Book not found in cart.');
+    }
 }

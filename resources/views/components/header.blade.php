@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="px-1 py-1">
-              <a href="/{{ auth()->check() ? '/' . auth()->user()->name . '/cart' : '#' }}/cart"
+              <a href="{{ auth()->check() ? '/' . auth()->user()->name . '/cart' : '#' }}"
                 class="flex items-center">
                 <i class="fa-solid fa-cart-shopping mx-1 text-sm"></i>
                 <span class="text-sm font-semibold uppercase">Cart</span>

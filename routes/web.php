@@ -50,6 +50,12 @@ Route::get('/book/{id}/edit', [BookController::class, 'edit'])->name('books.edit
 // Edit Books
 Route::put('/book/{id}', [BookController::class, 'update'])->name('books.update');
 
+// Delete books
+Route::delete('/book/{book}', [BookController::class, 'destroy'])->name('books.destroy');
+
+// Delete Cart Item
+Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.remove');
+
 
 
 
