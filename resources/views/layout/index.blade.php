@@ -24,7 +24,7 @@
       @endif
       <div class="flex flex-wrap justify-evenly">
         @if ($books->isEmpty())
-          <p>We don't have "{{ request('tag') }}" books yet. Sorry :(</p>
+          <p>We don't have {{ request('tag') ? request('tag') . ' books' : 'any books' }} yet. Sorry :(</p>
         @else
           @foreach ($books as $book)
             {{-- Book Card --}}

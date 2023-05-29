@@ -62,11 +62,12 @@ class CartController extends Controller
 
         // If the cart item exists, delete it
         if ($cartItem) {
+            $bookTitle = $cartItem->book->title; // Get the title of the book
             $cartItem->delete();
 
             return redirect()
                 ->back()
-                ->with('success', 'Book removed from cart.');
+                ->with('success', "$bookTitle removed from cart.");
         }
 
         // If the cart item doesn't exist, show an error message or handle the situation as needed
