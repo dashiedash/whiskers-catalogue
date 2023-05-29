@@ -20,20 +20,39 @@
         <div class="flex space-x-3">
           @auth
             <a href="{{ route('books.edit', $book->id) }}"
-              class="rounded bg-teal-500 py-2 px-5 text-sm font-bold text-white hover:bg-teal-400">
+              class="bg-teal-500 py-2 px-5 text-sm font-bold rounded text-white hover:bg-teal-400">
               Edit
             </a>
             <form action="{{ route('books.destroy', $book->id) }}" method="POST"
               onsubmit="return confirm('Are you sure you want to delete this book?')">
               @csrf
               @method('DELETE')
-              <button type="submit" class="rounded bg-rose-500 py-2 px-5 text-sm font-bold text-white hover:bg-rose-700">
+              <button type="submit" class="bg-rose-500 rounded py-2 px-5 text-sm font-bold text-white hover:bg-rose-700">
                 Delete
               </button>
             </form>
-
           @endauth
         </div>
+      </div>
+      <div class="my-3 flex">
+        @if ($book->stock > 0)
+            {{-- Book Quantity input field --}}
+            <form action="/cart" method="POST" class="flex items-center w-full justify-end">
+              @csrf
+              <input type="hidden" name="book_id" value="{{ $book->id }}">
+              <input type="number" name="quantity"
+                class="w-auto rounded-l-lg border-y border-l border-gray-200 bg-white p-2 text-sm text-gray-800"
+                placeholder="Qty." required min="1" max="{{ $book->stock }}">
+              <button type="submit"
+                class="bg-rose-500 py-2 px-4 font-bold text-sm text-white rounded-r hover:bg-rose-700">
+                Add to Cart
+              </button>
+            </form>
+          @else
+            <button class="bg-gray-300 py-2 px-4 font-bold text-white" disabled>
+              Out of Stock :(
+            </button>
+          @endif
       </div>
       <div class="flex">
         <div class="w-1/4">
