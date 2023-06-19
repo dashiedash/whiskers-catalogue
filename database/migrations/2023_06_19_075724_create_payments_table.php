@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('payment_id');
             $table->string('payer_id');
             $table->string('payer_email');
-            $table->float('amount', 10, 2);
+            $table->float('amount', 10, 2)->default(0);
             $table->string('currency');
             $table->string('payment_status');
             $table->timestamps();

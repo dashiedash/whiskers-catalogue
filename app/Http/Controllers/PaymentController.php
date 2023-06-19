@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use Omnipay\Omnipay;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class PaymentController extends Controller
         if ($request->input('paymentId') && $request->input('PayerID')) {
             $transaction = $this->gateway->completePurchase([
                 'payer_id' => $request->input('PayerID'),
-                'transactionReference' => $request->input('paymentID'),
+                'transactionReference' => $request->input('paymentId'), // Updated parameter name
             ]);
 
             $response = $transaction->send();
@@ -60,7 +61,7 @@ class PaymentController extends Controller
 
                 $payment->save();
 
-                return 'Payment is Successful! Your transaction ID is ' + $arr['id'];
+                return 'Payment is Successful! Your transaction ID is ' . $arr['id'];
             } else {
                 return $response->getMessage();
             }
