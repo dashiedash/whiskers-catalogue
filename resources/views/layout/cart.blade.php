@@ -19,7 +19,7 @@
     </div>
 
     {{-- User's Cart Items --}}
-    <div class="container">
+    <div class="container m-auto">
       <div class="flex flex-wrap justify-evenly">
         @forelse ($cartItems as $cartItem)
           <div class="m-3 flex w-full bg-white p-7 shadow-lg md:w-2/5">
@@ -56,6 +56,19 @@
         @empty
           <p>Your cart is empty.</p>
         @endforelse
+      </div>
+      <div class="p-3">
+        <form action="{{ route('paypal.payment') }}" method="POST">
+          @csrf
+
+          <input type="hidden" name="amount" value="10">
+
+          <div class="flex-row-reverse flex">
+            <button type="submit" class="rounded bg-teal-500 py-2 px-4 font-bold text-white hover:bg-teal-700">
+              Pay with PayPal
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </main>

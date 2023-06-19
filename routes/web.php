@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,13 @@ Route::delete('/book/{book}', [BookController::class, 'destroy'])->name('books.d
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.remove');
 
 // Submit Payment Form
-Route::post('pay', [PaymentController::class, 'pay'])->name('payment');
+Route::post('pay', [PaymentController::class, 'pay'])->name('paypal.payment');
+
+// Successful Payment
+Route::get('success', [PaymentController::class, 'success'])->name('paypal.success');
+
+// Erroneous Payment
+Route::get('error', [PaymentController::class, 'error'])->name('paypal.error');
 
 
 
