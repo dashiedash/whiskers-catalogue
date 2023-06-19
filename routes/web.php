@@ -56,6 +56,8 @@ Route::delete('/book/{book}', [BookController::class, 'destroy'])->name('books.d
 // Delete Cart Item
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.remove');
 
+// Submit Payment Form
+Route::post('pay', [PaymentController::class, 'pay'])->name('payment');
 
 
 
