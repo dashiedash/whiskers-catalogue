@@ -69,7 +69,8 @@ class PaymentController extends Controller
         }
     }
 
-    public function error() {
-        return "User has declined the payment."
+    public function error()
+    {
+        return "User has declined the payment.";
     }
 }
