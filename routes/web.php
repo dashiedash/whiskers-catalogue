@@ -61,7 +61,7 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.remo
 Route::post('pay', [PaymentController::class, 'pay'])->name('paypal.payment');
 
 // Successful Payment
-Route::get('success', [PaymentController::class, 'success'])->name('paypal.success');
+Route::get('/success', [PaymentController::class, 'success'])->name('paypal.success');
 
 // Erroneous Payment
 Route::get('error', [PaymentController::class, 'error'])->name('paypal.error');

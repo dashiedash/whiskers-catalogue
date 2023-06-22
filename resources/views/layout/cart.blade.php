@@ -45,10 +45,13 @@
               @foreach ($cartItems as $cartItem)
                 <tr>
                   <td class="whitespace-no-wrap flex content-center px-5 py-3">
-                    <form action="{{ route('cart.remove', $cartItem) }}" method="POST">
+                    <form action="{{ route('cart.remove', $cartItem) }}"
+                      onsubmit="return confirm('Are you sure you want to remove &quot;{{ $cartItem->book->title }}&quot; from the cart?')"
+                      method="POST">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="text-red-500 hover:text-red-700 focus:outline-none">
+                      <button type="submit"
+                        class="text-red-500 hover:text-red-700 focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                           class="mr-3 h-5 w-5">
                           <path fill-rule="evenodd"
@@ -65,7 +68,7 @@
                   <td class="whitespace-no-wrap px-5 py-3">
                     {{ $cartItem->quantity }}
                   </td>
-                  <td class="whitespace-no-wrap px-5 py-3 w-1/4">
+                  <td class="whitespace-no-wrap w-1/4 px-5 py-3">
                     $ {{ $cartItem->book->price }}
                   </td>
                 </tr>
