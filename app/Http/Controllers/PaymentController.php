@@ -44,7 +44,7 @@ class PaymentController extends Controller
         if ($request->input('paymentId') && $request->input('PayerID')) {
             $transaction = $this->gateway->completePurchase([
                 'payer_id' => $request->input('PayerID'),
-                'transactionReference' => $request->input('paymentId'), // Updated parameter name
+                'transactionReference' => $request->input('paymentId'),
             ]);
 
             $response = $transaction->send();
@@ -61,12 +61,24 @@ class PaymentController extends Controller
 
                 $payment->save();
 
-                return 'Payment is Successful! Your transaction ID is ' . $arr['id'];
+                return view('payment.after', [
+                    'paymentHeading' => 'Payment Successful',
+                    'paymentMessage' => 'Your payment has been successful.',
+                    'transactionId' => $arr['id']
+                ]);
             } else {
-                return $response->getMessage();
+                return view('payment.after', [
+                    'paymentHeading' => 'Payment Declined',
+                    'paymentMessage' => 'Your payment has been declined.',
+                    'transactionId' => null
+                ]);
             }
         } else {
-            return "Payment declined!";
+            return view('payment.after', [
+                'paymentHeading' => 'User Declined',
+                'paymentMessage' => 'The user has declined the payment.',
+                'transactionId' => null
+            ]);
         }
     }
 

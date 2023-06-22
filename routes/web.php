@@ -19,7 +19,7 @@ use App\Http\Controllers\PaymentController;
 */
 
 // Store Page
-Route::get('/', [BookController::class, 'index'])->name('layout.index');
+Route::get('/', [BookController::class, 'index'])->name('home');
 
 // Login Page
 Route::get('/login', [UserController::class, 'login'])->name('login');
