@@ -21,56 +21,85 @@
     {{-- User's Cart Items --}}
     <div class="container m-auto">
       <div class="flex flex-wrap justify-evenly">
-        @forelse ($cartItems as $cartItem)
-          <div class="m-3 flex w-full bg-white p-7 shadow-lg md:w-2/5">
-            <div class="w-1/4">
-              <img class="w-full"
-                src="{{ $cartItem->book->cover ? asset('storage/' . $cartItem->book->cover) : asset('images\default-cover.png') }}"
-                alt="" />
-            </div>
-            <div class="w-3/4 px-3">
-              <a href="{{ route('books.show', ['id' => $cartItem->book->id]) }}"">
-                <h3 class="text-lg font-bold">
-                  {{ $cartItem->book->title }}
-                </h3>
-                <p class="text-sm italic text-slate-600">{{ $cartItem->book->subtitle }}</p>
-              </a>
-              <div class="bg-slate-950 my-1 w-fit rounded-full px-3 pb-1">
-                <a href="/?tag={{ urlencode($cartItem->book->genre) }}"><span
-                    class="text-xs text-white">{{ $cartItem->book->genre }}</span></a>
-              </div>
-              <p class="my-2 font-bold">{{ $cartItem->book->author_first_name }} {{ $cartItem->book->author_last_name }}
-              </p>
-              <p class="my-3 font-bold">$ {{ $cartItem->book->price }}</p>
-
-              <form action="{{ route('cart.remove', ['id' => $cartItem->id]) }}" method="POST" class="mt-4">
-                @csrf
-                @method('DELETE')
-                <button type="submit"
-                  class="rounded bg-rose-500 py-2 px-3 text-sm font-bold text-white hover:bg-rose-400">
-                  Remove
-                </button>
-              </form>
-            </div>
-          </div>
-        @empty
+        @if ($cartItems->isEmpty())
           <p>Your cart is empty.</p>
-        @endforelse
+        @else
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th
+                  class="bg-gray-50 px-5 py-3 text-left text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">
+                  Book Title
+                </th>
+                <th
+                  class="bg-gray-50 px-5 py-3 text-left text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">
+                  Quantity
+                </th>
+                <th
+                  class="bg-gray-50 px-5 py-3 text-left text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">
+                  Price
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white">
+              @foreach ($cartItems as $cartItem)
+                <tr>
+                  <td class="whitespace-no-wrap flex content-center px-5 py-3">
+                    <form action="{{ route('cart.remove', $cartItem) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="text-red-500 hover:text-red-700 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                          class="mr-3 h-5 w-5">
+                          <path fill-rule="evenodd"
+                            d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
+                            clip-rule="evenodd" />
+                        </svg>
+
+                      </button>
+                    </form>
+                    <a href="{{ route('books.show', $cartItem->book) }}" class="text-blue-700 hover:underline">
+                      {{ $cartItem->book->title }}
+                    </a>
+                  </td>
+                  <td class="whitespace-no-wrap px-5 py-3">
+                    {{ $cartItem->quantity }}
+                  </td>
+                  <td class="whitespace-no-wrap px-5 py-3 w-1/4">
+                    $ {{ $cartItem->book->price }}
+                  </td>
+                </tr>
+              @endforeach
+
+              <tr>
+                <td class="whitespace-no-wrap px-6 py-4 text-right font-bold" colspan="2">Total:</td>
+                <td class="whitespace-no-wrap px-6 py-4 font-bold">
+                  $
+                  {{ $cartItems->sum(function ($item) {
+                      return $item->book->price * $item->quantity;
+                  }) }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        @endif
       </div>
-      <div class="p-3">
+      <div class="flex justify-end py-3">
         <form action="{{ route('paypal.payment') }}" method="POST">
           @csrf
 
-          <input type="hidden" name="amount" value="10">
+          <input type="hidden" name="amount"
+            value="{{ $cartItems->sum(function ($item) {
+                return $item->book->price * $item->quantity;
+            }) }}">
 
-          <div class="flex-row-reverse flex">
+          <div class="flex flex-row-reverse">
             <button type="submit" class="rounded bg-teal-500 py-2 px-4 font-bold text-white hover:bg-teal-700">
               Pay with PayPal
             </button>
           </div>
         </form>
       </div>
-    </div>
   </main>
   <x-footer class="bg-slate-300" />
   <x-flash-message />

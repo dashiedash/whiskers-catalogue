@@ -24,7 +24,7 @@
       {{-- Author's Last Name --}}
       <div class="mb-4">
         <label for="author_last_name" class="mb-2 block font-bold text-gray-700">Author's Last Name</label>
-        <input type="text" name="author_last_name" id="author_last_name" value="{{ old('author_last_name') }}" required
+        <input type="text" name="author_last_name" id="author_last_name" value="{{ old('author_last_name') }}"
           class="form-input w-full rounded border border-slate-500 p-2">
         @error('author_last_name')
           <p class="text-xs italic text-red-500">{{ $message }}</p>
