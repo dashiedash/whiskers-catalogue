@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Database\Factories\BookFactory;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\v010\BookResource;
 
 class BookController extends Controller
 {
@@ -17,8 +18,9 @@ class BookController extends Controller
     }
 
     // Show a single book
-    public function show($id)
+    public function show(Book $book)
     {
+        return new BookResource($book);
     }
 
     // Show create book form
