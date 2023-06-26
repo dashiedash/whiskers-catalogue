@@ -1,29 +1,16 @@
 <?php
 
-namespace App\Services\v010;
+namespace App\Filters;
 
 use Illuminate\Http\Request;
 
-class BookQuery
+class ApiFilter
 {
-    protected $safeParams = [
-        'authorLastName' => ['eq'],
-        'authorFirstName' => ['eq'],
-        'publishYear' => ['eq', 'gt', 'gte', 'lt', 'lte'],
-        'title' => ['eq'],
-        'publisher' => ['eq'],
-        'genre' => ['eq'],
-    ];
+    protected $safeParams = [];
 
     protected $columnMap = [];
 
-    protected $operatorMap = [
-        'eq' => '=',
-        'lt' => '<',
-        'lte' => '≤',
-        'gt' => '>',
-        'gte' => '≥',
-    ];
+    protected $operatorMap = [];
 
     public function transform(Request $request)
     {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\v010;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Services\v010\BookQuery;
+use App\Filters\v010\BookFilters;
 use Database\Factories\BookFactory;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\v010\BookResource;
@@ -16,13 +16,14 @@ class BookController extends Controller
     // Show all books
     public function index(Request $request)
     {
-        $filter = new BookQuery();
+        $filter = new BookFilters();
         $queryItems = $filter->transform($request);
 
         if (count($queryItems) == 0) {
             return new BookCollection(Book::paginate());
         } else {
-            return new BookCollection(Book::where($queryItems)->paginate());
+            $books = Book::where($queryItems)->paginate();
+            return new BookCollection($books->append($request->query()));
         }
     }
 
