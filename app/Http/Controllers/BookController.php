@@ -59,14 +59,13 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'author_last_name' => 'required',
             'author_first_name' => 'required',
             'publish_year' => ['required', 'numeric', 'digits:4', 'gte:1899', 'lte:' . date('Y')],
             'title' => 'required',
             'genre' => 'required',
             'publisher' => 'required',
             'publish_city' => 'required',
-            'publish_state' => 'required',
+            'publish_state' => 'nullable',
             'publish_country' => 'required',
             'description' => 'required',
             'isbn' => ['required', Rule::unique('books', 'isbn')],
@@ -81,7 +80,7 @@ class BookController extends Controller
 
         Book::create($formFields);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Book successfully created.');
     }
 
     // Show edit book form
@@ -135,4 +134,5 @@ class BookController extends Controller
         $book->delete();
 
         return redirect('/')->with('success', 'Book deleted successfully');
-    }}
+    }
+}

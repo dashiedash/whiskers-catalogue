@@ -10,6 +10,7 @@ use Database\Factories\BookFactory;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\v010\BookResource;
 use App\Http\Resources\v010\BookCollection;
+use App\Http\Requests\V010\StoreBookRequest;
 
 class BookController extends Controller
 {
@@ -27,27 +28,11 @@ class BookController extends Controller
         }
     }
 
-    // Show a single book
-    public function show(Book $book)
-    {
-        return new BookResource($book);
-    }
-
-    // Show create book form
-    public function create()
-    {
-    }
-
     // Store book
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
+        return new BookResource(Book::create($request->all()));
     }
-
-    // Show edit book form
-    public function edit($id)
-    {
-    }
-
     // Update Book
     public function update(Request $request, $id)
     {
