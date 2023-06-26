@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\v010\BookResource;
 use App\Http\Resources\v010\BookCollection;
 use App\Http\Requests\V010\StoreBookRequest;
+use App\Http\Requests\V010\UpdateBookRequest;
 
 class BookController extends Controller
 {
@@ -28,14 +29,21 @@ class BookController extends Controller
         }
     }
 
+    // Show a single book
+    public function show($id)
+    {
+        return Book::find($id);
+    }
+
     // Store book
     public function store(StoreBookRequest $request)
     {
         return new BookResource(Book::create($request->all()));
     }
     // Update Book
-    public function update(Request $request, $id)
+    public function update(UpdateBookRequest $request, Book $book)
     {
+        $book->update($request->all());
     }
 
     // Delete Book
