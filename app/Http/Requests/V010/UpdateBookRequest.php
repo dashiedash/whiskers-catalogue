@@ -42,7 +42,7 @@ class UpdateBookRequest extends FormRequest
             ];
         } else {
             return [
-                'authorLastName' => ['sometimes', 'nullable'],
+                'authorLastName' => ['sometimes', 'required'],
                 'authorFirstName' => ['sometimes', 'required'],
                 'publishYear' => ['sometimes', 'required', 'numeric', 'digits:4', 'gte:1899', 'lte:' . date('Y')],
                 'title' => ['sometimes', 'required'],
@@ -62,14 +62,11 @@ class UpdateBookRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        $arr = [];
-        $this->merge([
-            'author_last_name' => $this->authorLastName,
-            'author_first_name' => $this->authorFirstName,
-            'publish_year' => $this->publishYear,
-            'publish_city' => $this->publishCity,
-            'publish_state' => $this->publishState,
-            'publish_country' => $this->publishCountry,
-        ]);
+        $this->authorLastName ? $this->merge(['author_last_name' => $this->authorLastName]) : '';
+        $this->authorFirstName ? $this->merge(['author_first_name' => $this->authorFirstName]) : '';
+        $this->publishYear ? $this->merge(['publish_year' => $this->publishYear]) : '';
+        $this->publishCity ? $this->merge(['publish_city' => $this->publishCity]) : '';
+        $this->publishState ? $this->merge(['publish_state' => $this->publishState]) : '';
+        $this->publishCountry ? $this->merge(['publish_country' => $this->publishCountry]) : '';
     }
 }
