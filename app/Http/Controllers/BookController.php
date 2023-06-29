@@ -61,7 +61,8 @@ class BookController extends Controller
         $formFields = $request->validate([
             'author_first_name' => 'required',
             'publish_year' => ['required', 'numeric', 'digits:4', 'gte:1899', 'lte:' . date('Y')],
-            'title' => 'required',
+            'title' => 'nullable',
+            'subtitle' => 'required',
             'genre' => 'required',
             'publisher' => 'required',
             'publish_city' => 'required',
@@ -103,6 +104,7 @@ class BookController extends Controller
             'author_first_name' => 'required',
             'publish_year' => ['required', 'numeric', 'digits:4', 'gte:1899', 'lte:' . date('Y')],
             'title' => 'required',
+            'subtitle' => 'nullable',
             'genre' => 'required',
             'publisher' => 'required',
             'publish_city' => 'required',
