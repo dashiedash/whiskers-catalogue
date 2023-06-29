@@ -75,6 +75,8 @@ class PaymentController extends Controller
                     }
                 }
 
+                $user->cartItems()->delete();
+
                 return view('payment.after', [
                     'paymentHeading' => 'Payment Successful',
                     'paymentMessage' => 'Your payment has been successful.',
