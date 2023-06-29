@@ -61,6 +61,20 @@ class PaymentController extends Controller
 
                 $payment->save();
 
+                // Update book stock based on quantities in the user's cart
+                $user = auth()->user();
+                $cartItems = $user->cartItems()->with('book')->get();
+
+                foreach ($cartItems as $cartItem) {
+                    $book = $cartItem->book;
+                    $quantity = $cartItem->quantity;
+
+                    if ($book->stock >= $quantity) {
+                        $book->stock -= $quantity;
+                        $book->save();
+                    }
+                }
+
                 return view('payment.after', [
                     'paymentHeading' => 'Payment Successful',
                     'paymentMessage' => 'Your payment has been successful.',
